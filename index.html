@@ -153,19 +153,24 @@
         }
 
 
-        /* --- Image/Progress Update Styles --- */
         .progress-image {
             margin-top: 15px;
             padding: 15px;
             background-color: #f7f7f7;
             border: 1px solid #eee;
             border-radius: 4px;
-            width: calc(100% - 30px); /* Adjust width */
+            /* Max width of the image container is set here */
+            max-width: 400px; /* Optional: Sets a maximum width for the image block itself */
+            margin-left: 560px; /* Aligns with the list item content */
         }
 
         .progress-image img {
-            max-width: 100%;
-            height: auto;
+            max-width: 100%; /* Ensures image never exceeds the width of its container (.progress-image) */
+            height: auto; /* Maintains aspect ratio */
+            max-height: 350px; /* Sets a maximum height to control vertical space */
+            width: auto; /* Ensures natural width is respected up to max-width */
+            object-fit: contain; /* Ensures the image fits within the bounds without being cropped */
+            
             display: block;
             margin-bottom: 10px;
             border-radius: 4px;
