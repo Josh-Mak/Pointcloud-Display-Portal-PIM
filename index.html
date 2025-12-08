@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Implementation Plan: Pointcloud Display Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght=300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- General Reset & Fonts --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Header & Summary --- */
+        header {
+            background-color: #3f51b5; /* Deep Blue/Indigo */
+            color: white;
+            padding: 30px 5%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 2.4em;
+        }
+
+        .status-summary {
+            font-size: 1.1em;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Phase (Tier 1) Styling --- */
+        .phase {
+            background-color: white;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 6px solid #3f51b5; /* Highlight border */
+        }
+
+        .phase h2 {
+            color: #3f51b5;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-weight: 500;
+            font-size: 1.8em;
+        }
+
+        /* --- Checklist UL/LI Base Styling --- */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        /* Tier 2 (Item) Styling */
+        .checklist > li {
+            padding: 12px 0 12px 30px;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #e9ecef;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        /* --- Status Icons (Pseudo-elements) --- */
+        .checklist > li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px; /* Adjust vertical alignment */
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* Status Colors for Tier 2 */
+        .completed::before {
+            background-color: #4caf50; /* Green */
+            content: '✓';
+        }
+
+        .in-progress::before {
+            background-color: #ff9800; /* Orange */
+            content: '•';
+            font-size: 16px;
+        }
+
+        .pending::before {
+            background-color: #9e9e9e; /* Gray */
+            content: '•';
+            font-size: 16px;
+        }
+
+        /* --- Tier 3 (Subitem) Styling --- */
+        .checklist ul {
+            /* This targets the nested UL (Subitems) */
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            margin-left: 10px; /* Indentation for subitems */
+            width: 100%; /* Ensure it spans correctly */
+        }
+
+        .checklist ul li {
+            /* Styling for Subitem LIs */
+            font-size: 0.95em;
+            padding: 5px 0 5px 25px;
+            position: relative;
+            border-bottom: none; /* Remove bottom border on subitems */
+            color: #555;
+        }
+        
+        /* Subitem Icon (simple square) */
+        .checklist ul li::before {
+            content: '▪'; /* Unicode square bullet */
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: #00bcd4; /* Light Blue */
+            font-size: 14px;
+            line-height: 1em;
+        }
+        
+        /* Optional: Style for completed subitems */
+        .checklist ul li.completed-sub::before {
+            content: '✔';
+            color: #4caf50;
+        }
+
+
+        /* --- Image/Progress Update Styles --- */
+        .progress-image {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            width: calc(100% - 30px); /* Adjust width */
+        }
+
+        .progress-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #777;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #ccc;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pointcloud Display Portal: Implementation Plan</h1>
+        <!-- <p class="status-summary">Current Status: **In Progress (60% Complete)** | Last Updated: Dec 8, 2025</p> -->
+    </header>
+
+    <main>
+        <div class="phase">
+            <h2>Phase 1: Research & Planning</h2>
+            <ul class="checklist">
+                <li class="completed">Overall Project Plans and Implementation Structure</li>
+                <li class="completed">Pointcloud Display Research</li>
+                <li class="completed">Technology Stack Selected</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 2: Server Setup</h2>
+            <ul class="checklist">
+                <li class="completed">Setup Roles and Permissions on Server</li>
+                <li class="completed">Create Initial Data Transfer Protocols</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 3: Local Data Service</h2>
+            <ul class="checklist">
+                <li class="completed">Download and Install Required Software (Entwine, iTowns)</li>
+                <li class="completed">Build the EPT from Example LAS</li>
+                <li class="completed">Serve the EPT on a Local Server (Open Port)
+                    <ul>
+                        <li class="completed-sub">Setup Local Server</li>
+                        <li class="completed-sub">Test Data Transfer</li>
+                    </ul>
+
+                    <div class="localtest-image">
+                        <img src="localtest.png" alt="Local Data Serve Test.">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 4: Public Data Service</h2>
+            <ul class="checklist">
+                <li class="completed">Public Data Server Setup (NGINX)</li>
+                <li class="completed">Setup Server Directories/Structure</li>
+                <li class="completed">Serve the EPT to the Public Server
+                    <div class="publictest-image">
+                        <img src="publictest.png" alt="Public Data Serve Test.">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 5: Proper Pointcloud Viewer</h2>
+            <ul class="checklist">
+                <li class="in-progress">Create HTML Viewer</li>
+                <li class="pending">Test and Revise Viewer</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 6: Authentication (Rough Plan)</h2>
+            <ul class="checklist">
+                <li class="pending">Create, Upload, and Test a Second Pointcloud</li>
+                <li class="pending">Create Authentication System</li>
+                <li class="pending">Integrate Authentication into Viewer</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 7: Final Revisions and Additions (Rough Plan)</h2>
+            <ul class="checklist">
+                <li class="pending">Integrate Location and GIS Data Into the Viewer</li>
+                <li class="pending">Testing and Revisions - Features, Bugs, Optimizations, etc</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h2>Phase 8: Production and Deployment</h2>
+            <ul class="checklist">
+                <li class="pending">Fully Move Data to the Server</li>
+                <li class="pending">Create and Connect Credentials, Authentication</li>
+                <li class="pending">Create Guidelines for Management of Data</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2025 My Project Team. All rights reserved.</p>
+    </footer> -->
+
+</body>
+</html>
